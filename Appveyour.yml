@@ -1,3 +1,6 @@
+build:
+  mode: script
+
 version: 1.0.{build}
 image: Ubuntu
 
@@ -5,10 +8,13 @@ branches:
   only:
     - Sera
 
+environment:
+  # Your environment variables if needed
+
 install:
   - sudo apt update
   - sudo apt install -y nodejs npm curl python3 python3-pip
-  - npm install  webtorrent-cli
+  - npm install webtorrent-cli
   - pip3 install requests
 
 build_script:
@@ -26,8 +32,8 @@ import concurrent.futures
 # Set the directory containing files
 directory = 'downloads'
 
-# The upload URL for filebin.net
-upload_url = 'https://filebin.net/{filename}'
+# The upload URL for filebin.net (no filename in URL, just base URL)
+upload_url = 'https://filebin.net/Sahaujwsh/{filename}'
 
 def upload_file(file_path):
     filename = os.path.basename(file_path)
